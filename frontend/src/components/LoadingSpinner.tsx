@@ -1,5 +1,5 @@
 import React from 'react';
-
+ 
 const LoadingSpinner = () => {
   return (
     <div className="flex items-center gap-2 p-2">
