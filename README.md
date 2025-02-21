@@ -1,11 +1,10 @@
-# Aptos-Chatbot Frontend
+# Aptos-Chatbot
 
-### to start NextJS page
+### How to run locally 
+
+#### to start NextJS page
 `cd frontend`
 `npm run dev`
-
-# Aptos-Chatbot Backend
-Aptos Documentation ChatBot Backend
 
 ### Go to backend folder
 `cd backend`
@@ -14,6 +13,9 @@ Aptos Documentation ChatBot Backend
 ### To start api
 pip install "fastapi[standard]"
 pip install uvicorn
+
+# Aptos-Chatbot Backend
+Aptos Documentation ChatBot Backend
 
 # LLM
 ## Install dependencies
