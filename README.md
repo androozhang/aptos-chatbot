@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Aptos-Chatbot Frontend
 
-## Getting Started
+### to start NextJS page
+`cd frontend`
+`npm run dev`
 
-First, run the development server:
+# Aptos-Chatbot Backend
+Aptos Documentation ChatBot Backend
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Go to backend folder
+`cd backend`
+
+# API
+### To start api
+pip install "fastapi[standard]"
+pip install uvicorn
+
+# LLM
+## Install dependencies
+
+1. Do the following before installing the dependencies found in `requirements.txt` file because of current challenges installing `onnxruntime` through `pip install onnxruntime`. 
+
+    - For MacOS users, a workaround is to first install `onnxruntime` dependency for `chromadb` using:
+
+    ```python
+     conda install onnxruntime -c conda-forge
+    ```
+    See this [thread](https://github.com/microsoft/onnxruntime/issues/11037) for additonal help if needed. 
+
+     - For Windows users, follow the guide [here](https://github.com/bycloudai/InstallVSBuildToolsWindows?tab=readme-ov-file) to install the Microsoft C++ Build Tools. Be sure to follow through to the last step to set the enviroment variable path.
+
+
+2. Now run this command to install dependenies in the `requirements.txt` file. 
+
+```python
+pip install -r requirements.txt
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install markdown depenendies with: 
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```python
+pip install "unstructured[md]"
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Create database
 
-## Learn More
+Create the Chroma DB.
 
-To learn more about Next.js, take a look at the following resources:
+```python
+python create_database.py
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Query the database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Query the Chroma DB.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```python
+python query_data.py "How to install aptos cli on mac?"
+```
