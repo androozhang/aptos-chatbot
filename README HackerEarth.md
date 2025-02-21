@@ -51,6 +51,7 @@ Please refrence [README.MD](README.md)
 - **Maintain Context** - WebSockets are used to store current session queries and responses for further context in answering additional session questions.
 - **Docs Integration** - Directly Process forked Aptos documentation through the `addAdditional.py` (append) or `createDatabase.py` (clear and overwrite).
 - **Brand Customization** - Integrated Aptos company logo and color scheme.
+- **Easy Doc Integration** - UI was created using Next.js and the chat bot page component can be easily included in Aptos Docs.
 - **Support File Types** 
     - .md
     - .mdx
