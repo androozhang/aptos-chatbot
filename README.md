@@ -1,63 +1,85 @@
 # Aptos-Chatbot
+## An Aptos-Focused Question-Answering Model
 
-### How to run locally 
+---
+## Get Started
+### Clone the repository:  
+   ```sh
+   git clone https://github.com/androozhang/aptos-chatbot
+   ```
+## Backend Setup
 
-#### to start NextJS page
-`cd frontend`
-`npm run dev`
+### Install Dependencies
+1. Install **Python 3.10.0**  
+   - [Download Python 3.10.0](https://www.python.org/downloads/release/python-3100/)
 
-### Go to backend folder
-`cd backend`
-
-# API
-### To start api
-`pip install "fastapi[standard]"`
-`pip install uvicorn`
-
-`uvicorn main:app --reload`
-
-# Aptos-Chatbot Backend
-Aptos Documentation ChatBot Backend
-
-# LLM
-## Install dependencies
-
-1. Do the following before installing the dependencies found in `requirements.txt` file because of current challenges installing `onnxruntime` through `pip install onnxruntime`. 
-
-    - For MacOS users, a workaround is to first install `onnxruntime` dependency for `chromadb` using:
-
-    ```python
-     conda install onnxruntime -c conda-forge
+2. Change directories
     ```
-    See this [thread](https://github.com/microsoft/onnxruntime/issues/11037) for additonal help if needed. 
+    cd backend
+    ```
+3. Create and activate a virtual environment of your choice 
 
-     - For Windows users, follow the guide [here](https://github.com/bycloudai/InstallVSBuildToolsWindows?tab=readme-ov-file) to install the Microsoft C++ Build Tools. Be sure to follow through to the last step to set the enviroment variable path.
+4. Install dependencies:  
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+   - If you encounter issues with `langchain`, remove version constraints in `requirements.txt` and reinstall.
+   - Ensure your Python environment is **3.10**.
+
+## Run the API
+1. Create a `.env` file and add GROQ API key:  
+   ```
+   GROQ_API_KEY=
+   ```
+
+2. Start FastAPI:  
+   ```
+   uvicorn main:app --reload
+   ```
+
+---
+
+## Database Setup
+
+### A pre-existing database with vectorized values is located at:  
+   ```
+   AllDocsDB/chroma
+   ```
+
+### Creating the Vector Database (Not needed unless you provide your own documentation for queries)
+1. Ensure all **.mdx** files are in the correct directory:  
+   ```python
+   # Update constants in `create_database.py`
+   DATA_PATH = "data/mdx"  # Set to your directory
+   ```
+
+2. Run the database creation script:  
+   ```sh
+   python create_database.py
+   ```
+
+   - **Note:** Running this script will **wipe and recreate** the vectorized database and takes time.
 
 
-2. Now run this command to install dependenies in the `requirements.txt` file. 
+---
 
-```python
-pip install -r requirements.txt
-```
+## Frontend Setup
 
-3. Install markdown depenendies with: 
+### Install Dependencies
+1. Install **Node.js**  
+   - [Download Node.js](https://nodejs.org/en/download)
 
-```python
-pip install "unstructured[md]"
-```
+2. Set up the frontend:  
+   ```sh
+   cd frontend
+   npm install
+   npm run dev
+   ```
 
-## Create database
+---
 
-Create the Chroma DB.
-
-```python
-python create_database.py
-```
-
-## Query the database
-
-Query the Chroma DB.
-
-```python
-python query_data.py "How to install aptos cli on mac?"
-```
+## Backend & Frontend Communication
+- The **frontend** sends a websocket connection request to the **FastAPI backend**.
+- The **backend** processes websocket messages as queries using **LangChain** and a **vector database** (Chroma DB).
+- Results are returned through the websocket to the **frontend** and are displayed.
