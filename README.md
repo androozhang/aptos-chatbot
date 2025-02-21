@@ -11,8 +11,10 @@
 
 # API
 ### To start api
-pip install "fastapi[standard]"
-pip install uvicorn
+`pip install "fastapi[standard]"`
+`pip install uvicorn`
+
+`uvicorn main:app --reload`
 
 # Aptos-Chatbot Backend
 Aptos Documentation ChatBot Backend
