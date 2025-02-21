@@ -14,6 +14,9 @@ import {
   FileText,
   RefreshCcw,
   SquarePlay,
+  Hammer,
+  Upload,
+  SquareCode,
 } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Image from "next/image";
@@ -366,14 +369,14 @@ export default function Home() {
   };
 
   return (
-    <div className="flex h-screen bg-[#1A1A1A] text-white">
+    <div className="flex h-screen bg-[#111111] text-white">
       {/* Sidebar */}
       <div
         className={`${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } fixed md:relative md:translate-x-0 z-10 w-[260px] h-full bg-[#1A1A1A] border-r border-[#2A2A2A] transition-transform duration-200 ease-in-out flex flex-col`}
+        } fixed md:relative md:translate-x-0 z-10 w-[260px] h-full bg-[#111111] border-r border-[#282929] transition-transform duration-200 ease-in-out flex flex-col`}
       >
-        <div className="p-4 border-b border-[#2A2A2A]">
+        <div className="p-4 border-b border-[#282929]">
           <button
             onClick={createNewChat}
             className="w-full px-4 py-2 text-sm font-medium text-white bg-[#2C2C2C] rounded-md hover:bg-[#363636] flex items-center gap-2"
@@ -412,7 +415,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="p-4 border-t border-[#2A2A2A]">
+        <div className="p-4 border-t border-[#282929]">
           <div className="flex items-center gap-2 p-2 hover:bg-[#2C2C2C] rounded-md cursor-pointer">
             <div className="w-8 h-8 bg-gray-700 rounded-full flex items-center justify-center">
               <span className="text-sm">AZ</span>
@@ -438,7 +441,7 @@ export default function Home() {
 
         {/* Welcome Message */}
         {!currentChat?.messages.length && (
-          <div className="flex-1 flex items-center justify-center">
+          <div className="flex-1 flex items-center justify-center mt-40">
             <div className="text-center">
               <Image
                 src="https://mmsn7692iu.ufs.sh/f/0NwYfOQDdha1LJYTrNdi8d93fOMcjlCVYGPksB1Zg4qNWLye"
@@ -451,7 +454,7 @@ export default function Home() {
               <h1 className="text-4xl font-light mb-6">Good afternoon</h1>
               <div className="max-w-xl mx-auto">
                 <p className="text-gray-300">How can I help you today?</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8">
                   <button
                     onClick={() => {
                       sendBot("How do I create a smart contract?");
@@ -479,6 +482,35 @@ export default function Home() {
                     <RefreshCcw className="w-5 h-5 mb-2" />
                     <p className="text-sm">
                       What is the lifecycle of a Aptos transaction?
+                    </p>
+                  </button>
+                  <button
+                    onClick={() => {
+                      sendBot("Why does Aptos use Move?");
+                    }}
+                    className="p-4 bg-[#2C2C2C] rounded-lg hover:bg-[#363636] text-left"
+                  >
+                    <SquareCode className="w-5 h-5 mb-2" />
+                    <p className="text-sm">Why does Aptos use Move?</p>
+                  </button>
+                  <button
+                    onClick={() => {
+                      sendBot("How do I deploy?");
+                    }}
+                    className="p-4 bg-[#2C2C2C] rounded-lg hover:bg-[#363636] text-left"
+                  >
+                    <Upload className="w-5 h-5 mb-2" />
+                    <p className="text-sm">How do I deploy to Objects?</p>
+                  </button>
+                  <button
+                    onClick={() => {
+                      sendBot("What are some tools that I can test?");
+                    }}
+                    className="p-4 bg-[#2C2C2C] rounded-lg hover:bg-[#363636] text-left"
+                  >
+                    <Hammer className="w-5 h-5 mb-2" />
+                    <p className="text-sm">
+                    What are some tools that I can use to test?
                     </p>
                   </button>
                 </div>
@@ -525,7 +557,7 @@ export default function Home() {
         </div>
 
         {/* Input Form */}
-        <div className="border-t border-[#2A2A2A] bg-[#1A1A1A] p-4">
+        <div className="border-t border-[#282929] bg-[#111111] p-4">
           {!isBotResponding && (
             <form onSubmit={handleSubmit} className="relative">
               <input
