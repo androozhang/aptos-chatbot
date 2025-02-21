@@ -17,6 +17,7 @@ import {
   Hammer,
   Upload,
   SquareCode,
+  Box,
 } from "lucide-react";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import Image from "next/image";
@@ -495,7 +496,7 @@ export default function Home() {
                   </button>
                   <button
                     onClick={() => {
-                      sendBot("How do I deploy?");
+                      sendBot("How do I deploy to objects?");
                     }}
                     className="p-4 bg-[#2C2C2C] rounded-lg hover:bg-[#363636] text-left"
                   >
@@ -504,13 +505,13 @@ export default function Home() {
                   </button>
                   <button
                     onClick={() => {
-                      sendBot("What are some tools that I can test?");
+                      sendBot("What is a Digial Asset Standard?");
                     }}
                     className="p-4 bg-[#2C2C2C] rounded-lg hover:bg-[#363636] text-left"
                   >
-                    <Hammer className="w-5 h-5 mb-2" />
+                    <Box className="w-5 h-5 mb-2" />
                     <p className="text-sm">
-                    What are some tools that I can use to test?
+                    What is a Digial Asset Standard?
                     </p>
                   </button>
                 </div>
